@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Quiz";
+}
+
+<div class="text-left">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    @using (Html.BeginForm())
+    {
+        <p>@ViewData["Left"] @ViewData["Operation"] @ViewData["Right"] =</p>
+        @Html.TextBox("Answer","", new { type="number" })
+        <input type="submit" value="Next" name="Action"/>
+        <input type="submit" value="Finish" name="Action"/>
+    }
+</div>

@@ -1,0 +1,35 @@
+﻿@using Web2._3.Models
+
+@{
+    ViewData["Title"] = "Results";
+}
+
+<h2>Quiz results</h2>
+
+@{
+    if ((bool)ViewData["QuizValid"])
+    {
+        int Corrects                = (int)ViewData["CorrectAmount"];
+        int Amount                  = (int)ViewData["QuestionAmount"];
+        List<Question> Questions    = (List<Question>)ViewData["Questions"];
+        List<int> Answers           = (List<int>)ViewData["Answers"];
+
+        <h3>Right answers @Corrects out @Amount</h3>
+        <ul>
+            @for (int i = 0; i < Amount; i++)
+            {
+                <li>
+                    @Questions[i].Left 
+                    @Quiz.OperationToString(Questions[i].Operation)
+                    @Questions[i].Right
+                    =
+                    @Answers[i]
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Quiz was not started.</p>
+    }
+}
